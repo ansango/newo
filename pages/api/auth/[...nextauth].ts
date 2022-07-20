@@ -8,6 +8,7 @@ const auth = async (req: NextApiRequest, res: NextApiResponse) => {
   return await NextAuth(req, res, {
     providers,
     adapter,
+    debug: true,
   });
 };
 export default auth;
