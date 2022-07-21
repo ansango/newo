@@ -15,6 +15,12 @@ const Nav = () => {
         </div>
 
         <div className="flex justify-end flex-1">
+          <Link href="/">
+            <a className="text-base-500">Home</a>
+          </Link>
+          <Link href="/about">
+            <a className="text-base-500">About</a>
+          </Link>
           <SwitchLanguage />
           <SwitchTheme />
         </div>
