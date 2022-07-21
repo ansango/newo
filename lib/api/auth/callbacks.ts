@@ -7,7 +7,16 @@ const callbacks: Partial<CallbacksOptions> = {
   async redirect({ url, baseUrl }) {
     return baseUrl;
   },
-  async session({ session, token, user }) {
+  async session({
+    session,
+    token,
+    user,
+  }: {
+    session: any;
+    token: any;
+    user: any;
+  }) {
+    session.roles = user.roles;
     return session;
   },
   async jwt({ token, user, account, profile, isNewUser }) {

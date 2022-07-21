@@ -4,8 +4,9 @@ import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 
 const Home: NextPage = () => {
-  const status = useSession({ required: true });
-  console.log(status.data?.user);
+  const { data } = useSession({ required: true });
+  const roles = data?.roles as string[];
+  console.log(roles.includes("user"));
   return (
     <Container>
       <Structure>
