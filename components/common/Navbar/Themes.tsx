@@ -6,6 +6,9 @@ const Themes = () => {
   const { setTheme, theme: currentTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  console.log("currentTheme", currentTheme);
+
   return (
     <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       {mounted &&

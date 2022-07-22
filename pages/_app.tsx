@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { defaultTheme, themes } from "lib/data/config";
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
+import WrapperLayout from "components/layout/WrapperLayout";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
@@ -26,8 +27,10 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
           themes={themes}
           defaultTheme={defaultTheme}
         >
-          <Component {...pageProps} />
-          <Toaster />
+          <WrapperLayout>
+            <Component {...pageProps} />
+            <Toaster />
+          </WrapperLayout>
         </ThemeProvider>
       </SessionProvider>
     </>
