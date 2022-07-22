@@ -3,30 +3,34 @@ import type { AppProps } from "next/app";
 import { SessionProvider, useSession } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import { defaultTheme, themes } from "lib/data/config";
-import React, { FC } from "react";
-
-const Auth: FC<{ children: React.ReactNode }> = ({ children }) => {
-  // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
-  const { status } = useSession({ required: true });
-  console.log(status);
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
-
-  return <>{children}</>;
-};
+import Head from "next/head";
+import { Toaster } from "react-hot-toast";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
-    <SessionProvider session={session}>
-      <ThemeProvider
-        attribute="class"
-        themes={themes}
-        defaultTheme={defaultTheme}
-      >
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </SessionProvider>
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <meta name="description" content="Description" />
+        <meta name="keywords" content="Keywords" />
+        <title>Next.js PWA Example</title>
+      </Head>
+      <SessionProvider session={session}>
+        <ThemeProvider
+          attribute="class"
+          themes={themes}
+          defaultTheme={defaultTheme}
+        >
+          <Component {...pageProps} />
+          <Toaster />
+        </ThemeProvider>
+      </SessionProvider>
+    </>
   );
 };
 

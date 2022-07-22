@@ -1,4 +1,7 @@
-const formatDate = (date, locale) => {
+const formatDate = (
+  date: string | number | Date,
+  locale: Intl.LocalesArgument
+) => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",

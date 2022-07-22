@@ -15,6 +15,14 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "paths": {
+      "@/api/*": ["lib/api/*"],
+      "@/mocks/*": ["lib/mocks/*"],
+      "@/models/*": ["lib/models/*"],
+      "@/services/*": ["lib/services/*"],
+      "@/store/*": ["lib/store/*"],
+      "@/utils/*": ["lib/utils/*"]
+    }
   },
   "include": ["types/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

@@ -1,14 +1,11 @@
-import Container from "components/Container";
-import Structure from "components/Structure";
+import MainLayout from "components/layout/MainLayout";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <Container>
-      <Structure>
-        <div className="space-y-10">Home</div>
-      </Structure>
-    </Container>
+    <MainLayout>
+      <div>e</div>
+    </MainLayout>
   );
 };
 
