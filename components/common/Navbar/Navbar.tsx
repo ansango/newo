@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Structure from "../Structure";
 import Brand from "./Brand";
 import NavDesktop from "./NavDesktop";
