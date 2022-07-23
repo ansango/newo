@@ -18,7 +18,7 @@ const Navbar = () => {
 
         <div className="navbar-end">
           <SwitchTheme />
-          {/* <User /> */}
+          <User />
           <SignIn />
         </div>
       </div>

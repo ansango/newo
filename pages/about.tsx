@@ -1,5 +1,5 @@
-import Container from "components/Container";
-import Structure from "components/Structure";
+import Container from "components/common/Container";
+import Structure from "components/common/Structure";
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 

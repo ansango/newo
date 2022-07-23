@@ -2,7 +2,7 @@ import { FC } from "react";
 
 type BlankAvatar = {
   size: "xs" | "sm" | "md" | "lg";
-  username: Username;
+  email: Email;
 };
 
 enum textBlank {
@@ -19,13 +19,13 @@ enum sizeBlank {
   lg = "w-32",
 }
 
-const BlankAvatar: FC<BlankAvatar> = ({ size, username }) => {
+const BlankAvatar: FC<BlankAvatar> = ({ size, email }) => {
   const cnSize = `${sizeBlank[size]} bg-neutral-focus text-neutral-content`;
   const cnText = `${textBlank[size]} uppercase`;
   return (
     <div className="avatar placeholder">
       <div className={cnSize}>
-        <span className={cnText}>{username.charAt(0)}</span>
+        <span className={cnText}>{email.charAt(0)}</span>
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 import { Session } from "next-auth";
 
-export interface UserState {
+export interface AuthState {
   value: { session: Session | null };
   status: "idle" | "loading" | "failed";
   onSignIn: boolean;
   onSignOut: boolean;
 }
 
-export const initialState: UserState = {
+export const initialState: AuthState = {
   value: { session: null },
   status: "idle",
   onSignIn: false,
