@@ -16,7 +16,7 @@ const Dashboard = () => {
             .filter(({ roles }) => roles.includes("user"))
             .map(({ label, path, description }, index) => {
               if (path === "/dashboard") return null;
-              const cn = `card w-full shadow-xl image-full opacity-90`;
+              const cn = `card w-full shadow-xl image-full opacity-90 glass shadow-md bg-secondary-focus hover:bg-secondary-focus text-secondary-content`;
               return (
                 <li key={index} className="cursor-pointer">
                   <Link href={path} passHref>
@@ -41,7 +41,7 @@ const Dashboard = () => {
             .filter(({ roles }) => roles.includes("admin"))
             .map(({ label, path, description }, index) => {
               if (path === "/dashboard") return null;
-              const cn = `card w-full shadow-xl image-full opacity-90`;
+              const cn = `card w-full shadow-xl image-full opacity-90 card w-full shadow-xl image-full opacity-90 glass shadow-md bg-secondary-focus hover:bg-secondary-focus text-secondary-content`;
               return (
                 <li key={index} className="cursor-pointer">
                   <Link href={path} passHref>
