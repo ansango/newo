@@ -1,3 +1,4 @@
+import ButtonGoogle from "components/common/Button/ButtonGoogle";
 import ButtonLink from "components/common/Button/ButtonLink";
 import CardBasicContent from "components/common/Cards/Basic/CardBasicContent";
 import { Form, Input } from "components/common/Forms";
@@ -22,25 +23,9 @@ const SignInForm: FC<Props> = ({}) => {
             },
           }}
         />
-        <Input
-          name="password"
-          label="Contraseña"
-          type="password"
-          options={{
-            required: {
-              value: true,
-              message: "Introduce tu contraseña",
-            },
-          }}
-        />
-        <p className="text-sm">
-          <ButtonLink href="/recovery" label="¿Olvidaste tu contraseña?" />
-        </p>
         <SigInButton />
-        <p className="text-sm space-x-1">
-          <span>¿No tienes cuenta?</span>
-          <ButtonLink href="/signup" label="Crea una!" />
-        </p>
+        <div className="divider">O accede con</div>
+        <ButtonGoogle isFull label="Google" />
       </CardBasicContent>
     </Form>
   );
