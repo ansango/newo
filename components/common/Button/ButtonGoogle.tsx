@@ -11,7 +11,8 @@ type Props = {
 
 const ButtonGoogle: FC<Props> = ({ isFull, label }) => {
   const [isLoading, setIsloading] = useState(false);
-  const handleSignIn = async () => {
+  const handleSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setIsloading(true);
     try {
       await signIn("google");
