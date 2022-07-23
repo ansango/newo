@@ -26,9 +26,14 @@ const DrawerBar = () => {
                 </a>
               </Link>
             </li>
-            {routes.map(({ label, path, icon }) => {
+          </div>
+
+          <div className="divider my-3"></div>
+          {routesDashboard
+            .filter(({ roles }) => roles.includes("user"))
+            .map(({ label, path, icon, roles }) => {
               const cn = routeActive(pathname, path)
-                ? "bg-primary text-primary-content"
+                ? "bg-primary text-white"
                 : "";
               return (
                 <li key={path}>
@@ -41,24 +46,24 @@ const DrawerBar = () => {
                 </li>
               );
             })}
-          </div>
-
           <div className="divider my-3"></div>
-          {routesDashboard.map(({ label, path, icon }) => {
-            const cn = routeActive(pathname, path)
-              ? "bg-primary text-white"
-              : "";
-            return (
-              <li key={path}>
-                <Link href={path}>
-                  <a className={cn}>
-                    <Icon icon={icon} kind="outline" className="w-5 h-5" />
-                    {label}
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
+          {routesDashboard
+            .filter(({ roles }) => roles.includes("admin"))
+            .map(({ label, path, icon, roles }) => {
+              const cn = routeActive(pathname, path)
+                ? "bg-primary text-white"
+                : "";
+              return (
+                <li key={path}>
+                  <Link href={path}>
+                    <a className={cn}>
+                      <Icon icon={icon} kind="outline" className="w-5 h-5" />
+                      {label}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
         </div>
       </ul>
     </div>

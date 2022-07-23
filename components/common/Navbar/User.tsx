@@ -39,6 +39,9 @@ const User: FC = () => {
               const cn = routeActive(pathname, path)
                 ? "bg-primary text-primary-content"
                 : "";
+              if (path.includes("dashboard")) {
+                return;
+              }
               return (
                 <li key={path}>
                   <Link href={path}>
