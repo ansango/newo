@@ -35,14 +35,16 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
-  roles         String[]  @default(["user"])
+  roles         String[]   @default(["user"])
+  avatar        String?
   accounts      Account[]
   sessions      Session[]
+  Exercise      Exercise[]
 }
 
 model VerificationToken {
@@ -52,4 +54,17 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Exercise {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String
+  name        String   @unique
+  description String?
+  video       String?
+  tags        String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: SetNull)
 }
