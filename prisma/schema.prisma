@@ -44,7 +44,8 @@ model User {
   avatar        String?
   accounts      Account[]
   sessions      Session[]
-  Exercise      Exercise[]
+  exercises     Exercise[]
+  workout       Workout[]
 }
 
 model VerificationToken {
@@ -66,5 +67,16 @@ model Exercise {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
-  user        User     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user User @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+
+model Workout {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: SetNull)
 }
