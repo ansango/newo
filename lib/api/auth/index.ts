@@ -1,6 +1,5 @@
 import { NextAuthOptions, PagesOptions, type SessionOptions } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
-import { type JWTOptions } from "next-auth/jwt";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import { providers } from "./providers";

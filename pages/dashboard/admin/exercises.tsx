@@ -5,7 +5,9 @@ import { PrismaClient, Prisma } from "@prisma/client";
 
 export async function getStaticProps() {
   const prisma = new PrismaClient();
-  const exercises = await prisma.exercise.findMany();
+  const exercises = await prisma.exercise.findMany({
+    where: { userId: "62dc13e3a5a78cb9fc4ca059" },
+  });
 
   return {
     props: { exercises },

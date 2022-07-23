@@ -76,5 +76,12 @@ const routesDashboard: Props[] = [
     description: "Crear, editar y eliminar ejercicios.",
     roles: ["admin"],
   },
+  {
+    path: "/dashboard/admin/session",
+    label: "Sesión",
+    icon: "ClockIcon",
+    description: "Tus datos de sesión.",
+    roles: ["admin"],
+  },
 ];
 export { routes, routesDashboard, userNavRoutes };

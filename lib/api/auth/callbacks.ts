@@ -13,6 +13,7 @@ export const callbacks: Partial<CallbacksOptions> = {
   },
   async session({ session, token, user }: { session: any; token: any; user: any }) {
     session.user.roles = user.roles;
+    session.user.id = user.id;
     return session;
   },
 };
