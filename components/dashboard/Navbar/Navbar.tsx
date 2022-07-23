@@ -2,7 +2,6 @@ import { Icon } from "components/common/Icons";
 import SignIn from "components/common/Navbar/SignIn";
 import User from "components/common/Navbar/User";
 import { FC } from "react";
-import SwitchTheme from "./SwitchTheme";
 
 const Navbar: FC = () => {
   return (
@@ -16,7 +15,6 @@ const Navbar: FC = () => {
         </label>
       </div>
       <div className="navbar-end">
-        <SwitchTheme />
         <User />
       </div>
     </div>

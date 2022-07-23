@@ -40,7 +40,7 @@ const DrawerBar = () => {
                 .filter(({ roles }) => roles.includes("user"))
                 .map(({ label, path, icon }) => {
                   const cn = routeActive(pathname, path)
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-primary-content"
                     : "";
                   return (
                     <li key={path}>
@@ -67,7 +67,7 @@ const DrawerBar = () => {
                 .filter(({ roles }) => roles.includes("admin"))
                 .map(({ label, path, icon }) => {
                   const cn = routeActive(pathname, path)
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-primary-content"
                     : "";
                   return (
                     <li key={path}>
