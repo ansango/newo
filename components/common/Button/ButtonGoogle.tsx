@@ -25,8 +25,8 @@ const ButtonGoogle: FC<Props> = ({ isFull, label }) => {
   const cn = `btn btn-primary btn-outline normal-case ${full} ${loading}`;
   return (
     <button className={cn} onClick={handleSignIn}>
-      <IconSimple icon="Google" className="w-4 h-4" />
       <span className="mx-2">{label}</span>
+      <IconSimple icon="Google" className="w-4 h-4" />
     </button>
   );
 };

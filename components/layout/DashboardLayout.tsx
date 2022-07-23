@@ -11,7 +11,6 @@ type Props = {
 };
 
 function Auth({ children }: any) {
-  // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
   const { push } = useRouter();
   const { status } = useSession({
     required: true,
@@ -27,6 +26,7 @@ function Auth({ children }: any) {
       </MainLayout>
     );
   }
+
   return children;
 }
 

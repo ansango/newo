@@ -1,15 +1,25 @@
 import ButtonGoogle from "components/common/Button/ButtonGoogle";
-import ButtonLink from "components/common/Button/ButtonLink";
+import ButtonMail from "components/common/Button/ButtonMail";
 import CardBasicContent from "components/common/Cards/Basic/CardBasicContent";
 import { Form, Input } from "components/common/Forms";
-import React, { FC, useCallback } from "react";
+import { signIn } from "next-auth/react";
+import React, { FC, useCallback, useState } from "react";
 import SigInButton from "./SigInButton";
 
 type Props = {};
 
 const SignInForm: FC<Props> = ({}) => {
+  const [isLoading, setIsloading] = useState(false);
+  const onSubmit = async ({ email }: { email: Email }) => {
+    setIsloading(true);
+    try {
+      await signIn("email", { email });
+    } catch (error) {
+      setIsloading(false);
+    }
+  };
   return (
-    <Form onSubmit={() => {}}>
+    <Form onSubmit={onSubmit}>
       <CardBasicContent>
         <Input
           name="email"
@@ -23,7 +33,7 @@ const SignInForm: FC<Props> = ({}) => {
             },
           }}
         />
-        <SigInButton />
+        <ButtonMail label="Iniciar sesión" isFull isLoading={isLoading} />
         <div className="divider">O accede con</div>
         <ButtonGoogle isFull label="Google" />
       </CardBasicContent>

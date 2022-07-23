@@ -1,7 +1,7 @@
-import fetcher from "@/utils/fetcher";
+import { getSessionAuthService } from "@/api/services/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getSession = createAsyncThunk("user/getUser", async () => {
-  const response = await fetcher("/api/user");
-  return response.user;
+export const getSession = createAsyncThunk("auth/getSession", async () => {
+  const response = await getSessionAuthService();
+  return response;
 });
