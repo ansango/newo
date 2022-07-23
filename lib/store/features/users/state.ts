@@ -1,11 +1,11 @@
 import { Session } from "next-auth";
 
-export interface UserState {
-  value: Session | null;
+export interface UsersState {
+  value: any | null;
   status: "idle" | "loading" | "failed";
 }
 
-export const initialState: UserState = {
+export const initialState: UsersState = {
   value: null,
   status: "idle",
 };

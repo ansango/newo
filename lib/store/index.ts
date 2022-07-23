@@ -1,12 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import authReducer from "./features/auth";
-import userReducer from "./features/user";
+
+import usersReducer from "./features/users";
 
 export function makeStore() {
   return configureStore({
     reducer: {
-      auth: authReducer,
-      user: userReducer,
+      users: usersReducer,
     },
   });
 }
