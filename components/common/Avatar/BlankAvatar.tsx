@@ -20,7 +20,7 @@ enum sizeBlank {
 }
 
 const BlankAvatar: FC<BlankAvatar> = ({ size, email }) => {
-  const cnSize = `${sizeBlank[size]} bg-neutral-focus text-neutral-content`;
+  const cnSize = `${sizeBlank[size]} bg-neutral-focus text-neutral-content rounded`;
   const cnText = `${textBlank[size]} uppercase`;
   return (
     <div className="avatar placeholder">

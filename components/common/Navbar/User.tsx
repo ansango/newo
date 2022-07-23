@@ -11,10 +11,11 @@ import { defaultTheme } from "lib/data/config";
 
 const User: FC = () => {
   const { pathname } = useRouter();
-  const { data, status } = useSession();
+  const session = useSession();
+  const { data, status } = session;
   const { setTheme } = useTheme();
-
   const user = data?.user;
+  console.log(user);
   const handleSignOut = async () => {
     try {
       await signOut({ redirect: true, callbackUrl: "/signin" });

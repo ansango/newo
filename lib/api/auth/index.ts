@@ -22,7 +22,7 @@ const options: NextAuthOptions = {
   callbacks,
   events,
   pages: {
-    // signIn: "/signin",
+    signIn: "/signin",
   },
   secret: process.env.NEXTAUTH_SECRET,
   useSecureCookies: false,
