@@ -13,6 +13,7 @@ const User: FC = () => {
   const { pathname } = useRouter();
   const { data, status } = useSession();
   const { setTheme } = useTheme();
+
   const user = data?.user;
   const handleSignOut = async () => {
     try {
