@@ -42,6 +42,4 @@ const GoogleProvider = Google({
   },
 });
 
-const providers: Provider[] = [EmailProvider, GoogleProvider];
-
-export default providers;
+export const providers: Provider[] = [EmailProvider, GoogleProvider];

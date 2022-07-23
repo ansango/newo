@@ -1,6 +1,6 @@
 import { type EventCallbacks } from "next-auth";
 
-const events: Partial<EventCallbacks> = {
+export const events: Partial<EventCallbacks> = {
   async signIn({}) {
     /* on successful sign in */
   },
@@ -20,5 +20,3 @@ const events: Partial<EventCallbacks> = {
     /* session is active */
   },
 };
-
-export default events;

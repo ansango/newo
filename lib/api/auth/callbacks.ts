@@ -1,6 +1,6 @@
 import { type CallbacksOptions } from "next-auth";
 
-const callbacks: Partial<CallbacksOptions> = {
+export const callbacks: Partial<CallbacksOptions> = {
   async signIn({ user, account, profile, email, credentials }) {
     return true;
   },
@@ -11,13 +11,8 @@ const callbacks: Partial<CallbacksOptions> = {
     }
     return url;
   },
-  async session({ session, user }: { session: any; user: any }) {
+  async session({ session, token, user }: { session: any; token: any; user: any }) {
     session.user.roles = user.roles;
     return session;
   },
-  async jwt({ token, user, account, profile, isNewUser }) {
-    return token;
-  },
 };
-
-export default callbacks;
