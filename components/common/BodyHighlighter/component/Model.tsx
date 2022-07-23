@@ -5,17 +5,11 @@ import { fillIntensityColor, fillMuscleData } from "../utils";
 
 type Props = {
   data?: ExerciseData[];
-  highlightedColors?: string[];
   onClick?: ((exercise: MuscleStats) => void) | (() => void);
   type?: ModelType;
 };
 
-const Model = ({
-  data = [],
-  highlightedColors = ["opacity-50", "opacity-75", "opacity-90"],
-  onClick,
-  type = "anterior",
-}: Props) => {
+const Model = ({ data = [], onClick, type = "anterior" }: Props) => {
   const muscleData = fillMuscleData([...data]);
   const mapData = type === "anterior" ? anteriorData : posteriorData;
 
@@ -27,12 +21,12 @@ const Model = ({
   };
 
   return (
-    <svg width="100%" height="100%" viewBox="0 0 100 200" className="w-56">
+    <svg width="100%" height="100%" viewBox="0 0 100 200">
       {mapData.map((exercise) =>
         exercise.svgPoints.map((points, index) => {
           const fill = fillIntensityColor(
             muscleData,
-            highlightedColors,
+            ["opacity-50", "opacity-75", "opacity-90"],
             exercise.muscle
           );
           const cnPointer = onClick ? "cursor-pointer" : "";
