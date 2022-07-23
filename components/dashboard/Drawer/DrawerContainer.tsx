@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import React, { FC, ReactNode } from "react";
 import DrawerBar from "./DrawerBar";
 
@@ -6,6 +7,7 @@ type Props = {
 };
 
 const DrawerContainer: FC<Props> = ({ children }) => {
+  
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

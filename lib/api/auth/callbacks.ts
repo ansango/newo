@@ -5,7 +5,11 @@ const callbacks: Partial<CallbacksOptions> = {
     return true;
   },
   async redirect({ url, baseUrl }) {
-    return baseUrl;
+    const isSignInPage = url.includes("signin");
+    if (isSignInPage) {
+      return `${baseUrl}/dashboard`;
+    }
+    return url;
   },
   async session({ session, user }: { session: any; user: any }) {
     session.user.roles = user.roles;

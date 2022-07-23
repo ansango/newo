@@ -63,14 +63,14 @@ const routesDashboard: Props[] = [
     roles: ["user"],
   },
   {
-    path: "/dashboard/users",
+    path: "/dashboard/admin/users",
     label: "Usuarios",
     icon: "UserGroupIcon",
     description: "Administrar usuarios.",
     roles: ["admin"],
   },
   {
-    path: "/dashboard/exercises",
+    path: "/dashboard/admin/exercises",
     label: "Ejercicios",
     icon: "BookOpenIcon",
     description: "Crear, editar y eliminar ejercicios.",

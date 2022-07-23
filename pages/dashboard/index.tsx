@@ -69,5 +69,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-Dashboard.auth = true;
