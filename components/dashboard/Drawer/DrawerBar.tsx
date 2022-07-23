@@ -38,7 +38,7 @@ const DrawerBar = () => {
               <div className="divider my-3"></div>
               {routesDashboard
                 .filter(({ roles }) => roles.includes("user"))
-                .map(({ label, path, icon, roles }) => {
+                .map(({ label, path, icon }) => {
                   const cn = routeActive(pathname, path)
                     ? "bg-primary text-white"
                     : "";
@@ -65,7 +65,7 @@ const DrawerBar = () => {
               <div className="divider my-3"></div>
               {routesDashboard
                 .filter(({ roles }) => roles.includes("admin"))
-                .map(({ label, path, icon, roles }) => {
+                .map(({ label, path, icon }) => {
                   const cn = routeActive(pathname, path)
                     ? "bg-primary text-white"
                     : "";

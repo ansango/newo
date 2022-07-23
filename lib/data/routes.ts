@@ -49,7 +49,7 @@ const routesDashboard: Props[] = [
     roles: ["user"],
   },
   {
-    path: "/dashboard/collections",
+    path: "/dashboard/workouts",
     label: "Entrenamientos",
     icon: "BookmarkIcon",
     description: "Crear, editar y eliminar tus entrenamientos.",

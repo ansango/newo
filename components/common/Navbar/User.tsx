@@ -27,7 +27,7 @@ const User: FC = () => {
         <div className="dropdown dropdown-hover py-2 dropdown-end">
           {user && user.email && (
             <label tabIndex={0} className="btn btn-ghost btn-square">
-              <Avatar size="xs" email={user.email} imgUrl={user?.image} />
+              <Avatar size="xs" email={user.email} />
             </label>
           )}
           <ul
