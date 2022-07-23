@@ -32,6 +32,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
           >
             <WrapperLayout>
               <Component {...pageProps} />
+
               <Toaster />
             </WrapperLayout>
           </ThemeProvider>

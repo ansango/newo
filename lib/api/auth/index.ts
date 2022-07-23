@@ -21,6 +21,9 @@ const options: NextAuthOptions = {
   adapter,
   callbacks,
   events,
+  pages: {
+    signIn: "/signin",
+  },
   secret: process.env.NEXTAUTH_SECRET,
   useSecureCookies: false,
   debug: true,
