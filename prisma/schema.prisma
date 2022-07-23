@@ -63,15 +63,20 @@ model Exercise {
   name        String   @unique
   description String?
   video       String?
+  image       String?
   tags        String[]
+  categories  String[] @default(["general"])
+  muscles     String[] @default([""])
+  equipment   String[] @default(["none"])
+  difficulty  String   @default("easy")
 
   user User @relation(fields: [userId], references: [id], onDelete: SetNull)
 }
 
 model Workout {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
   userId      String
-  name        String   @unique
+  name        String  @unique
   description String?
 
   user User @relation(fields: [userId], references: [id], onDelete: SetNull)
