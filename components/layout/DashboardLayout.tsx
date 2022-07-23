@@ -1,4 +1,4 @@
-import Navbar from "components/dashboard/Navbar";
+import Navbar from "components/dashboard/Navbar/Navbar";
 import { useRouter } from "next/router";
 import React, { FC, ReactNode } from "react";
 import { motion } from "framer-motion";

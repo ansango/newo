@@ -15,7 +15,6 @@ const User: FC = () => {
   const { data, status } = session;
   const { setTheme } = useTheme();
   const user = data?.user;
-  console.log(user);
   const handleSignOut = async () => {
     try {
       await signOut({ redirect: true, callbackUrl: "/signin" });
@@ -39,7 +38,7 @@ const User: FC = () => {
               const cn = routeActive(pathname, path)
                 ? "bg-primary text-primary-content"
                 : "";
-              if (path.includes("dashboard")) {
+              if (pathname.includes("dashboard")) {
                 return;
               }
               return (

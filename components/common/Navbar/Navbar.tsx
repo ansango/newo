@@ -3,7 +3,6 @@ import Brand from "./Brand";
 import NavDesktop from "./NavDesktop";
 import NavMobile from "./NavMobile";
 import SignIn from "./SignIn";
-import SwitchTheme from "./SwitchTheme";
 import User from "./User";
 
 const Navbar = () => {
@@ -17,7 +16,6 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-          <SwitchTheme />
           <User />
           <SignIn />
         </div>

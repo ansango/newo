@@ -3,5 +3,8 @@
 @tailwind utilities;
 
 html {
+  min-width: 360px;
   scroll-behavior: smooth;
 }
+
+

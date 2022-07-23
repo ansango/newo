@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import { Icon } from "../Icons";
+import { Icon } from "../../common/Icons";
 import Themes from "./Themes";
 
 const SwitchTheme = () => {
