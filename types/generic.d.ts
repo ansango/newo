@@ -50,3 +50,13 @@ type ExerciseMuscle = MuscleName;
 
 type WorkoutName = Name;
 type WorkoutDescription = Description;
+
+export enum Day {
+  MONDAY = "MONDAY",
+  TUESDAY = "TUESDAY",
+  WEDNESDAY = "WEDNESDAY",
+  THURSDAY = "THURSDAY",
+  FRIDAY = "FRIDAY",
+  SATURDAY = "SATURDAY",
+  SUNDAY = "SUNDAY",
+}

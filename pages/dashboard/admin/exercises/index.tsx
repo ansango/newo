@@ -5,6 +5,13 @@ import { PrismaClient, Prisma } from "@prisma/client";
 import { Icon } from "components/common/Icons";
 import Link from "next/link";
 
+import Model, {
+  ExerciseData,
+  MuscleStats,
+  ModelPosition,
+} from "components/common/BodyHighlighter";
+import { useCallback } from "react";
+
 export async function getStaticProps() {
   const prisma = new PrismaClient();
   const exercises = await prisma.exercise.findMany({
@@ -18,6 +25,9 @@ export async function getStaticProps() {
 
 const Exercises = ({ exercises }: any) => {
   console.log(exercises);
+
+  
+
   return (
     <DashboardLayout>
       <ContainerDashboard>

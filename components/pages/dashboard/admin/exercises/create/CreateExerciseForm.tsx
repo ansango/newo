@@ -1,20 +1,14 @@
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppDispatch } from "@/store/hooks";
 import { Input, TextArea } from "components/common/Forms";
 import { MultiSelect } from "components/common/Forms/MultiSelect";
-import { useCallback, useState } from "react";
-import Step from "components/common/Stepper/Step";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import IngredientFields from "./IngredientFields";
-import StepsFields from "./StepsField";
 import FileLarge from "components/common/Forms/FileLarge";
-import CardBasicContent from "components/common/Cards/Basic/CardBasicContent";
 
 import { useRouter } from "next/router";
-import CardSlim from "components/common/Cards/Slim/CardSlim";
-import CardSlimContent from "components/common/Cards/Slim/CardSlimContent";
 import CreateExerciseButton from "./CreateExerciseButton";
-import { categoriesSelectMapper } from "@/mocks/categories";
-import { blendersSelectMapper } from "@/mocks/blenders";
+import { categoriesSelectMapper } from "lib/mocks/categories";
+import { blendersSelectMapper } from "lib/mocks/blenders";
 
 type Selector = {
   label: any;

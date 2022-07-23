@@ -1,0 +1,26 @@
+import { Muscle, MuscleData } from "../component/metadata";
+
+export const DEFAULT_MUSCLE_DATA: Record<Muscle, MuscleData> = {
+  trapezius: { exercises: [], frequency: 0 },
+  "upper-back": { exercises: [], frequency: 0 },
+  "lower-back": { exercises: [], frequency: 0 },
+  chest: { exercises: [], frequency: 0 },
+  biceps: { exercises: [], frequency: 0 },
+  triceps: { exercises: [], frequency: 0 },
+  forearm: { exercises: [], frequency: 0 },
+  "back-deltoids": { exercises: [], frequency: 0 },
+  "front-deltoids": { exercises: [], frequency: 0 },
+  abs: { exercises: [], frequency: 0 },
+  obliques: { exercises: [], frequency: 0 },
+  adductor: { exercises: [], frequency: 0 },
+  hamstring: { exercises: [], frequency: 0 },
+  quadriceps: { exercises: [], frequency: 0 },
+  abductors: { exercises: [], frequency: 0 },
+  calves: { exercises: [], frequency: 0 },
+  gluteal: { exercises: [], frequency: 0 },
+  head: { exercises: [], frequency: 0 },
+  neck: { exercises: [], frequency: 0 },
+  knees: { exercises: [], frequency: 0 },
+  "left-soleus": { exercises: [], frequency: 0 },
+  "right-soleus": { exercises: [], frequency: 0 },
+};
