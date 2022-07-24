@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import React, { FC, ReactNode } from "react";
 import { motion } from "framer-motion";
 import DrawerContainer from "components/dashboard/Drawer/DrawerContainer";
+import { authSelector } from "@/store/features/auth";
+import { useSelector } from "react-redux";
 
 type Props = {
   children?: ReactNode;
@@ -10,6 +12,11 @@ type Props = {
 
 const DashboardLayout: FC<Props> = ({ children }) => {
   const { route } = useRouter();
+  const { isAuthenticated } = useSelector(authSelector);
+
+  if (!isAuthenticated) {
+    return <></>;
+  }
 
   return (
     <DrawerContainer>
