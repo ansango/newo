@@ -1,3 +1,5 @@
+import { Prisma } from "@prisma/client";
+
 /**
  * Model Account
  *
@@ -65,11 +67,18 @@ export type Exercise = {
   video: string | null;
   image: string | null;
   tags: string[];
-  categories: string[];
+  categories: ExerciseCategory[];
   muscles: string[];
   equipment: string[];
   difficulty: string;
 };
+
+export type ExerciseCategory =
+  | "cardio"
+  | "strength"
+  | "balance"
+  | "flexibility"
+  | "other";
 
 /**
  * Model Workout

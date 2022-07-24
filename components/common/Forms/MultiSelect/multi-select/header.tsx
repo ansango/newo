@@ -19,7 +19,7 @@ const Badges = () => {
 const AllSelected = () => {
   const { t } = useMultiSelect();
   return (
-    <span className="text-primary capitalize">{t("allItemsAreSelected")}</span>
+    <span className="text-primary">{t("allItemsAreSelected")}</span>
   );
 };
 

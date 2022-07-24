@@ -10,7 +10,7 @@ const CreateExercises = () => {
   return (
     <DashboardLayout>
       <ContainerDashboard>
-        <GenericDashboardHero title="Ejercicios" />
+        <GenericDashboardHero title="Crear ejercicio" />
         <Breadcrumb>
           <BreadcrumbLink
             href="/dashboard/collections"

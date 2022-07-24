@@ -1,15 +1,14 @@
 import { useAppDispatch } from "@/store/hooks";
-import { Input, TextArea } from "components/common/Forms";
+import { Input, RadioGroup, TextArea } from "components/common/Forms";
 import { MultiSelect } from "components/common/Forms/MultiSelect";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import FileLarge from "components/common/Forms/FileLarge";
 
 import { useRouter } from "next/router";
 import CreateExerciseButton from "./CreateExerciseButton";
-import { categoriesSelectMapper } from "lib/mocks/categories";
+import { categories } from "lib/mocks/categories";
 import { blendersSelectMapper } from "lib/mocks/blenders";
-
+import { Option } from "components/common/Forms/MultiSelect/lib/interfaces";
 type Selector = {
   label: any;
   value: any;
@@ -67,9 +66,9 @@ const CreateExerciseForm = () => {
         className="grid gap-5 grid-cols-12"
         onSubmit={handleSubmit(console.log)}
       >
-        <div className="col-span-full lg:col-span-6">
+        <div className="col-span-full">
           <div className="grid gap-4 grid-cols-12">
-            <div className="col-span-full sm:col-span-6 lg:col-span-full 2xl:col-span-6">
+            <div className="col-span-full">
               <Input
                 name="name"
                 label="Nombre"
@@ -78,44 +77,6 @@ const CreateExerciseForm = () => {
                   required: {
                     value: true,
                     message: "Introduce un nombre",
-                  },
-                }}
-              />
-            </div>
-            <div className="col-span-full sm:col-span-6 lg:col-span-full 2xl:col-span-6">
-              <FileLarge
-                label="Imagen"
-                name="file"
-                options={{
-                  required: {
-                    value: true,
-                    message: "Añade una imagen",
-                  },
-                }}
-              />
-            </div>
-            <div className="col-span-full sm:col-span-6 lg:col-span-full 2xl:col-span-6">
-              <Input
-                name="servings"
-                type="number"
-                label="Raciones"
-                options={{
-                  required: {
-                    value: true,
-                    message: "Introduce un número",
-                  },
-                }}
-              />
-            </div>
-            <div className="col-span-full sm:col-span-6 lg:col-span-full 2xl:col-span-6">
-              <Input
-                name="duration"
-                type="number"
-                label="Tiempo (mins)"
-                options={{
-                  required: {
-                    value: true,
-                    message: "Introduce un número",
                   },
                 }}
               />
@@ -136,26 +97,82 @@ const CreateExerciseForm = () => {
                 }}
               />
             </div>
+            <div className="col-span-full">
+              <RadioGroup
+                name="difficulty"
+                label="Dificultad"
+                data={[
+                  {
+                    lab: "Fácil",
+                    value: "easy",
+                  },
+                  {
+                    lab: "Intermedio",
+                    value: "medium",
+                  },
+                  {
+                    lab: "Difícil",
+                    value: "hard",
+                  },
+                ]}
+                options={{
+                  required: {
+                    value: true,
+                    message: "Selecciona una dificultad",
+                  },
+                }}
+              />
+            </div>
           </div>
         </div>
-        <div className="col-span-full lg:col-span-6">
+        <div className="col-span-full">
           <div className="grid gap-4 grid-cols-12">
-            <div className="col-span-full sm:col-span-6 lg:col-span-full ">
+            <div className="col-span-full">
               <MultiSelect
                 label="Categorías"
-                options={categoriesSelectMapper}
+                options={categories}
                 value={selectedCategories}
                 onChange={setSelectedCategories}
                 labelledBy="Select"
               />
             </div>
-            <div className="col-span-full sm:col-span-6 lg:col-span-full ">
+
+            <div className="col-span-full">
               <MultiSelect
-                label="Robots de cocina"
-                options={blendersSelectMapper}
-                value={selectedBlenders}
-                onChange={setSelectedBlenders}
+                label="Equipamiento"
+                options={categories}
+                value={selectedCategories}
+                onChange={setSelectedCategories}
                 labelledBy="Select"
+              />
+            </div>
+
+            <div className="col-span-full">
+              <MultiSelect
+                label="Músculos"
+                options={categories}
+                value={selectedCategories}
+                onChange={setSelectedCategories}
+                labelledBy="Select"
+              />
+            </div>
+
+            <div className="col-span-full">
+              <Input
+                name="video"
+                label="Video"
+                type="text"
+                options={{
+                  required: {
+                    value: true,
+                    message: "Introduce una url de video",
+                  },
+                  pattern: {
+                    value:
+                      /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
+                    message: "Introduce una url de video de youtube",
+                  },
+                }}
               />
             </div>
           </div>

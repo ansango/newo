@@ -20,7 +20,7 @@ const defaultProps: Partial<ISelectProps> = {
   className: "multi-select",
   debounceDuration: 200,
   options: [] as Option[],
-  labelledBy: "dasgsdg",
+  labelledBy: "",
 };
 
 interface MultiSelectContextProps extends ISelectProps {
