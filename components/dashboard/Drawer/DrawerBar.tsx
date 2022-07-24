@@ -10,8 +10,8 @@ type SessionContext = Record<keyof SessionContextValue, any>;
 const DrawerBar = () => {
   const { pathname } = useRouter();
   const { status, data } = useSession() as SessionContext;
-  const isAdmin = data.user.roles.includes("admin");
-  const isUser = data.user.roles.includes("user");
+  const isAdmin = data?.user.roles.includes("admin") || false;
+  const isUser = data?.user.roles.includes("user") || false;
   return (
     <div className="drawer-side">
       <label htmlFor="my-drawer-2" className="drawer-overlay"></label>

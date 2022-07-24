@@ -5,6 +5,7 @@ import {
   type ConfigureStoreOptions,
 } from "@reduxjs/toolkit";
 import { api } from "./api";
+import auth from "./features/auth";
 
 export const makeStore = (
   options?: ConfigureStoreOptions["preloadedState"] | undefined
@@ -12,6 +13,7 @@ export const makeStore = (
   return configureStore({
     reducer: {
       [api.reducerPath]: api.reducer,
+      auth,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(api.middleware),

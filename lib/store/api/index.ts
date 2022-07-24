@@ -30,7 +30,7 @@ export const api = createApi({
    * Tag types must be defined in the original API definition
    * for any tags that would be provided by injected endpoints
    */
-  tagTypes: ["Exercise"],
+  tagTypes: [],
   /**
    * This api has endpoints injected in adjacent files,
    * which is why no endpoints are shown below.
@@ -38,7 +38,6 @@ export const api = createApi({
    */
   endpoints: () => ({}),
 });
-
 
 export const enhancedApi = api.enhanceEndpoints({
   endpoints: () => ({

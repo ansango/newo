@@ -1,36 +1,19 @@
-import fetcher from "@/utils/fetcher";
+import { authSelector } from "@/store/features/auth";
 import formatDate from "@/utils/formatDate";
 import GenericDashboardHero from "components/common/Hero/GenericDashboardHero";
 import ContainerDashboard from "components/dashboard/ContainerDashboard";
 import DashboardLayout from "components/layout/DashboardLayout";
 import useTranslation from "next-translate/useTranslation";
+import { useSelector } from "react-redux";
 
-export const getServerSideProps = async ({ req, res }: any) => {
-  const url = `${process.env.NEXTAUTH_URL}/api/session`;
-  const data = await fetcher(url, req);
-  return {
-    props: { data },
-  };
-};
-
-const Session = ({
-  data,
-}: {
-  data: {
-    expires: string;
-    user: {
-      email: string;
-      id: string;
-      name: string;
-      image: string;
-      roles: string[];
-    };
-  } | null;
-}) => {
+const Session = () => {
+  const { expires: dataExpires, user } = useSelector(authSelector);
   const { t } = useTranslation("common");
-  const expires = data?.expires && formatDate(data.expires, t("date-locale"));
-  const user = data?.user;
-  const merged: any = { ...user, expires };
+  const merged: any = user &&
+    dataExpires && {
+      ...user,
+      expires: formatDate(dataExpires, t("date-locale")),
+    };
 
   return (
     <DashboardLayout>
