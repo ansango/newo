@@ -6,9 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 
 import { useRouter } from "next/router";
 import CreateExerciseButton from "./CreateExerciseButton";
-import { categories } from "lib/mocks/categories";
-import { blendersSelectMapper } from "lib/mocks/blenders";
-import { Option } from "components/common/Forms/MultiSelect/lib/interfaces";
+import { categories, muscles } from "lib/mocks";
 type Selector = {
   label: any;
   value: any;
@@ -16,7 +14,7 @@ type Selector = {
 
 const CreateExerciseForm = () => {
   const [selectedCategories, setSelectedCategories] = useState<Selector[]>([]);
-  const [selectedBlenders, setSelectedBlenders] = useState<Selector[]>([]);
+  const [selectedMuscles, setSelectedMuscles] = useState<Selector[]>([]);
   const dispatch = useAppDispatch();
 
   const methods = useForm({
@@ -134,10 +132,11 @@ const CreateExerciseForm = () => {
                 value={selectedCategories}
                 onChange={setSelectedCategories}
                 labelledBy="Select"
+                hasSelectAll={false}
               />
             </div>
 
-            <div className="col-span-full">
+            {/* <div className="col-span-full">
               <MultiSelect
                 label="Equipamiento"
                 options={categories}
@@ -145,15 +144,16 @@ const CreateExerciseForm = () => {
                 onChange={setSelectedCategories}
                 labelledBy="Select"
               />
-            </div>
+            </div> */}
 
             <div className="col-span-full">
               <MultiSelect
                 label="Músculos"
-                options={categories}
-                value={selectedCategories}
-                onChange={setSelectedCategories}
+                options={muscles}
+                value={selectedMuscles}
+                onChange={setSelectedMuscles}
                 labelledBy="Select"
+                hasSelectAll={false}
               />
             </div>
 

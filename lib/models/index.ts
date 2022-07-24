@@ -80,6 +80,8 @@ export type ExerciseCategory =
   | "flexibility"
   | "other";
 
+export type Equipment = "dumbbell" | "barbell" | "kettlebell" | "other";
+
 /**
  * Model Workout
  *
