@@ -147,7 +147,7 @@ const Dropdown = () => {
           </div>
         </div>
         {expanded && (
-          <div className="absolute z-[1] left-0 top-14 w-full pt-4 bg-base-100 rounded-lg border shadow-md">
+          <div className="absolute z-[2] left-0 top-14 w-full pt-4 bg-base-100 rounded-lg border shadow-md">
             <div className="px-5">
               <SelectPanel />
             </div>

@@ -1,5 +1,4 @@
 import { Icon } from "components/common/Icons";
-import SignIn from "components/common/Navbar/SignIn";
 import User from "components/common/Navbar/User";
 import { FC } from "react";
 

@@ -110,6 +110,7 @@ const CreateExerciseForm = () => {
             </div>
             <div className="col-span-full">
               <RadioGroup
+                kind="secondary"
                 name="difficulty"
                 label="Dificultad"
                 data={[
@@ -160,14 +161,22 @@ const CreateExerciseForm = () => {
             </div> */}
 
             <div className="col-span-full">
-              <MultiSelect
-                label="Músculos"
-                options={muscles}
-                value={selectedMuscles}
-                onChange={setSelectedMuscles}
-                labelledBy="Select"
-                hasSelectAll={false}
-              />
+              <div className="flex gap-5 items-end">
+                <MultiSelect
+                  label="Músculos"
+                  options={muscles}
+                  value={selectedMuscles}
+                  onChange={setSelectedMuscles}
+                  labelledBy="Select"
+                  hasSelectAll={false}
+                />
+                <button
+                  className="btn btn-square btn-secondary"
+                  onClick={checkVideo}
+                >
+                  <Icon className="w-5 h-5" icon="EyeIcon" kind="outline" />
+                </button>
+              </div>
             </div>
 
             <div className="col-span-full">
@@ -195,7 +204,7 @@ const CreateExerciseForm = () => {
                   <Icon className="w-5 h-5" icon="EyeIcon" kind="outline" />
                 </button>
               </div>
-              <div className="col-span-full py-16 ml-5 flex justify-end">
+              <div className="col-span-full py-16 flex justify-end">
                 {video && (
                   <>
                     <div className="indicator">
@@ -211,7 +220,7 @@ const CreateExerciseForm = () => {
                           />
                         </button>
                       </div>
-                      <div className="card border card-compact">
+                      <div className="card border card-compact bg-base-100 shadow-lg">
                         <div className="card-body">
                           <ReactPlayer
                             url={video}
@@ -223,7 +232,6 @@ const CreateExerciseForm = () => {
                         </div>
                       </div>
                     </div>
-                    <span className="w-5"></span>
                   </>
                 )}
               </div>
