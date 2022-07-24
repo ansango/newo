@@ -7,6 +7,8 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import CreateExerciseButton from "./CreateExerciseButton";
 import { categories, muscles } from "lib/mocks";
+import { Icon } from "components/common/Icons";
+import ReactPlayer from "react-player";
 type Selector = {
   label: any;
   value: any;
@@ -16,16 +18,27 @@ const CreateExerciseForm = () => {
   const [selectedCategories, setSelectedCategories] = useState<Selector[]>([]);
   const [selectedMuscles, setSelectedMuscles] = useState<Selector[]>([]);
   const dispatch = useAppDispatch();
-
+  const [video, setVideo] = useState<string | null>(null);
   const methods = useForm({
     defaultValues: {
-      ingredients: [],
-      steps: [],
+      video: "",
     },
   });
-  const { handleSubmit } = methods;
+  const { handleSubmit, watch } = methods;
 
   const { replace } = useRouter();
+  const closeVideo = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setVideo(null);
+  };
+  const checkVideo = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const url = watch("video");
+    // regex to check if url is valid
+    if (url.match(/^(https?:\/\/)?((www\.)?youtube\.com|youtu\.?be)\/.+$/)) {
+      setVideo(url);
+    }
+  };
 
   // const onSubmit = useCallback(
   //   async (values: any) => {
@@ -158,22 +171,62 @@ const CreateExerciseForm = () => {
             </div>
 
             <div className="col-span-full">
-              <Input
-                name="video"
-                label="Video"
-                type="text"
-                options={{
-                  required: {
-                    value: true,
-                    message: "Introduce una url de video",
-                  },
-                  pattern: {
-                    value:
-                      /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
-                    message: "Introduce una url de video de youtube",
-                  },
-                }}
-              />
+              <div className="flex gap-5 items-end">
+                <Input
+                  name="video"
+                  label="Video"
+                  type="text"
+                  options={{
+                    required: {
+                      value: true,
+                      message: "Introduce una url de video",
+                    },
+                    pattern: {
+                      value:
+                        /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
+                      message: "Introduce una url de video de youtube",
+                    },
+                  }}
+                />
+                <button
+                  className="btn btn-square btn-secondary"
+                  onClick={checkVideo}
+                >
+                  <Icon className="w-5 h-5" icon="EyeIcon" kind="outline" />
+                </button>
+              </div>
+              <div className="col-span-full py-16 ml-5 flex justify-end">
+                {video && (
+                  <>
+                    <div className="indicator">
+                      <div className="indicator-item ">
+                        <button
+                          className="btn btn-square btn-secondary btn-sm"
+                          onClick={closeVideo}
+                        >
+                          <Icon
+                            className="w-4 h-4"
+                            icon="XIcon"
+                            kind="outline"
+                          />
+                        </button>
+                      </div>
+                      <div className="card border card-compact">
+                        <div className="card-body">
+                          <ReactPlayer
+                            url={video}
+                            controls
+                            muted
+                            width={360}
+                            height={240}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <span className="w-5"></span>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
