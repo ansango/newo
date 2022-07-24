@@ -1,12 +1,8 @@
 import Container from "components/common/Container";
 import Structure from "components/common/Structure";
 import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
 
 const About: NextPage = () => {
-  const { data, status } = useSession();
-  const roles = data?.roles as string[] | undefined;
-  console.log(roles?.includes("user"));
   return (
     <Container>
       <Structure>

@@ -1,17 +1,16 @@
+import { authSelector } from "@/store/features/auth";
 import { routeActive } from "@/utils/router";
 import { Icon } from "components/common/Icons";
 import { routesDashboard } from "lib/constants/routes";
-import { type SessionContextValue, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-type SessionContext = Record<keyof SessionContextValue, any>;
+import { useSelector } from "react-redux";
 
 const DrawerBar = () => {
+  const { user } = useSelector(authSelector);
   const { pathname } = useRouter();
-  const { status, data } = useSession() as SessionContext;
-  const isAdmin = data?.user.roles.includes("admin") || false;
-  const isUser = data?.user.roles.includes("user") || false;
+  const isAdmin = user?.roles.includes("admin") || false;
+  const isUser = user?.roles.includes("user") || false;
   return (
     <div className="drawer-side">
       <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
