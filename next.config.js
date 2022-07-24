@@ -3,18 +3,14 @@ const nextTranslate = require("next-translate");
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 
-const nextConfig = {
+const nextConfig = withPWA({
   reactStrictMode: true,
-  swcMinify: true,
   pwa: {
     dest: "public",
-    runtimeCaching,
-  },
-};
-
-module.exports = nextTranslate({
-  nextConfig,
-  webpack: (config) => {
-    return config;
+    register: true,
+    skipWaiting: true,
+    disable: process.env.NODE_ENV === "development",
   },
 });
+
+module.exports = nextTranslate(nextConfig);

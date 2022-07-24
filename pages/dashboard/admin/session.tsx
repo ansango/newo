@@ -3,7 +3,7 @@ import formatDate from "@/utils/formatDate";
 import GenericDashboardHero from "components/common/Hero/GenericDashboardHero";
 import ContainerDashboard from "components/dashboard/ContainerDashboard";
 import DashboardLayout from "components/layout/DashboardLayout";
-
+import useTranslation from "next-translate/useTranslation";
 export const getServerSideProps = async ({ req, res }: any) => {
   const url = `${process.env.NEXTAUTH_URL}/api/session`;
   const data = await fetcher(url, req);
@@ -26,9 +26,13 @@ const Session = ({
     };
   } | null;
 }) => {
-  const expires = data?.expires && formatDate(data.expires, "en-US");
+  const { t } = useTranslation("common");
+
+  console.log();
+  const expires = data?.expires && formatDate(data.expires, t("date-locale"));
   const user = data?.user;
   const merged: any = { ...user, expires };
+
   return (
     <DashboardLayout>
       <ContainerDashboard>
