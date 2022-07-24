@@ -27,9 +27,7 @@ const Session = ({
     };
   } | null;
 }) => {
-  console.log(data);
   const { t } = useTranslation("common");
-
   const expires = data?.expires && formatDate(data.expires, t("date-locale"));
   const user = data?.user;
   const merged: any = { ...user, expires };
