@@ -9,6 +9,9 @@ import CreateExerciseButton from "./CreateExerciseButton";
 import { categories, muscles } from "lib/mocks";
 import { Icon } from "components/common/Icons";
 import ReactPlayer from "react-player";
+
+import Model, { ExerciseData } from "components/common/BodyHighlighter";
+
 type Selector = {
   label: any;
   value: any;
@@ -18,10 +21,14 @@ const CreateExerciseForm = () => {
   const [selectedCategories, setSelectedCategories] = useState<Selector[]>([]);
   const [selectedMuscles, setSelectedMuscles] = useState<Selector[]>([]);
   const dispatch = useAppDispatch();
+
   const [video, setVideo] = useState<string | null>(null);
+  const [showMuscles, setShowMuscles] = useState<boolean>(false);
+
   const methods = useForm({
     defaultValues: {
       video: "",
+      name: "",
     },
   });
   const { handleSubmit, watch } = methods;
@@ -31,6 +38,12 @@ const CreateExerciseForm = () => {
     e.preventDefault();
     setVideo(null);
   };
+
+  const handleShowMuscles = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setShowMuscles(!showMuscles);
+  };
+
   const checkVideo = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const url = watch("video");
@@ -39,6 +52,12 @@ const CreateExerciseForm = () => {
       setVideo(url);
     }
   };
+  const data: ExerciseData[] = [
+    {
+      name: watch("name"),
+      muscles: [...selectedMuscles.map((m) => m.value)],
+    },
+  ];
 
   // const onSubmit = useCallback(
   //   async (values: any) => {
@@ -172,13 +191,28 @@ const CreateExerciseForm = () => {
                 />
                 <button
                   className="btn btn-square btn-secondary"
-                  onClick={checkVideo}
+                  onClick={handleShowMuscles}
                 >
-                  <Icon className="w-5 h-5" icon="EyeIcon" kind="outline" />
+                  <Icon
+                    className="w-5 h-5"
+                    icon={!showMuscles ? "EyeIcon" : "XIcon"}
+                    kind="outline"
+                  />
                 </button>
               </div>
             </div>
-
+            <div className="col-span-full">
+              {showMuscles && (
+                <div className="grid gap-5 grid-cols-2">
+                  <div className="max-w-sm">
+                    <Model data={data} />
+                  </div>
+                  <div className="max-w-sm">
+                    <Model data={data} type="posterior" />
+                  </div>
+                </div>
+              )}
+            </div>
             <div className="col-span-full">
               <div className="flex gap-5 items-end">
                 <Input
@@ -204,7 +238,7 @@ const CreateExerciseForm = () => {
                   <Icon className="w-5 h-5" icon="EyeIcon" kind="outline" />
                 </button>
               </div>
-              <div className="col-span-full py-16 flex justify-end">
+              <div className="col-span-full py-16">
                 {video && (
                   <>
                     <div className="indicator">
