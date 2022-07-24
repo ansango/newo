@@ -6,7 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 
 import { useRouter } from "next/router";
 import CreateExerciseButton from "./CreateExerciseButton";
-import { categories, muscles } from "lib/mocks";
+import { categories, muscles } from "lib/constants";
 import { Icon } from "components/common/Icons";
 import ReactPlayer from "react-player";
 

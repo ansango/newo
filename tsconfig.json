@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@/api/*": ["lib/api/*"],
-      "@/mocks/*": ["lib/mocks/*"],
+      "@/mocks/*": ["lib/contants/*"],
       "@/models/*": ["lib/models/*"],
       "@/services/*": ["lib/services/*"],
       "@/store/*": ["lib/store/*"],

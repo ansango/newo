@@ -23,10 +23,10 @@ const ButtonGoogle: FC<Props> = ({ isFull, label }) => {
 
   const full = isFull ? "w-full" : "";
   const loading = isLoading ? "loading" : "";
-  const cn = `btn btn-primary btn-outline normal-case ${full} ${loading}`;
+  const cn = `btn btn-primary btn-outline normal-case ${full} ${loading} gap-2`;
   return (
     <button className={cn} onClick={handleSignIn}>
-      <span className="mx-2">{label}</span>
+      <span>{label}</span>
       <IconSimple icon="Google" className="w-4 h-4" />
     </button>
   );
