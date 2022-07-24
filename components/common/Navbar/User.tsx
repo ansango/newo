@@ -5,25 +5,29 @@ import { FC } from "react";
 import Avatar from "../Avatar/Avatar";
 import { Icon } from "../Icons";
 import { userNavRoutes } from "../../../lib/constants/routes";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { defaultTheme } from "lib/constants/config";
+import { authSelector, logout } from "@/store/features/auth";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/store/hooks";
 
 const User: FC = () => {
+  const { isAuthenticated, user } = useSelector(authSelector);
+  const dispatch = useAppDispatch();
   const { pathname } = useRouter();
-  const session = useSession();
-  const { data, status } = session;
   const { setTheme } = useTheme();
-  const user = data?.user;
+
   const handleSignOut = async () => {
     try {
       await signOut({ redirect: true, callbackUrl: "/signin" });
+      dispatch(logout());
       setTheme(defaultTheme);
     } catch (error) {}
   };
   return (
     <>
-      {status === "authenticated" && (
+      {isAuthenticated && (
         <div className="dropdown dropdown-hover py-2 dropdown-end">
           {user && user.email && (
             <label tabIndex={0} className="btn btn-ghost btn-square">
