@@ -3,8 +3,10 @@ import ContainerDashboard from "components/dashboard/ContainerDashboard";
 import DashboardLayout from "components/layout/DashboardLayout";
 import { Icon } from "components/common/Icons";
 import Link from "next/link";
+import { useGetExercisesQuery } from "@/store/api/exercises";
 
 const Exercises = () => {
+  const { data } = useGetExercisesQuery();
   return (
     <DashboardLayout>
       <ContainerDashboard>
@@ -15,6 +17,11 @@ const Exercises = () => {
               <Icon kind="outline" icon="PlusIcon" className="w-5 h-5" />
             </button>
           </Link>
+        </div>
+        <div>
+          {data?.map((exercise) => (
+            <div key={exercise.id}>{exercise.name}</div>
+          ))}
         </div>
       </ContainerDashboard>
     </DashboardLayout>
