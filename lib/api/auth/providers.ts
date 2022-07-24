@@ -1,4 +1,4 @@
-import { sendVerification } from "lib/email/transports/sendVerification";
+import { sendVerification } from "@/api/email/transports/sendVerification";
 import { type Provider } from "next-auth/providers";
 import Email from "next-auth/providers/email";
 import Google from "next-auth/providers/google";

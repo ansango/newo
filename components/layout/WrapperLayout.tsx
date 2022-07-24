@@ -1,4 +1,4 @@
-import { defaultTheme } from "lib/data/config";
+import { defaultTheme } from "lib/constants/config";
 import { useTheme } from "next-themes";
 import { FC, ReactNode, useEffect } from "react";
 import { Toaster } from "react-hot-toast";

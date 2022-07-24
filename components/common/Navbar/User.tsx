@@ -4,10 +4,10 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 import Avatar from "../Avatar/Avatar";
 import { Icon } from "../Icons";
-import { userNavRoutes } from "../../../lib/data/routes";
+import { userNavRoutes } from "../../../lib/constants/routes";
 import { signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
-import { defaultTheme } from "lib/data/config";
+import { defaultTheme } from "lib/constants/config";
 
 const User: FC = () => {
   const { pathname } = useRouter();

@@ -1,6 +1,5 @@
-import CardSlim from "components/common/Cards/Slim/CardSlim";
 import Step from "components/common/Stepper/Step";
-import { themes } from "lib/data/config";
+import { themes } from "lib/constants/config";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 

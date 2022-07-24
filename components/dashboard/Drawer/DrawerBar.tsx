@@ -1,6 +1,6 @@
 import { routeActive } from "@/utils/router";
 import { Icon } from "components/common/Icons";
-import { routesDashboard } from "lib/data/routes";
+import { routesDashboard } from "lib/constants/routes";
 import { type SessionContextValue, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";

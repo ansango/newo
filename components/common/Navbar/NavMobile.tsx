@@ -1,10 +1,9 @@
 import { routeActive } from "@/utils/router";
-import { routes } from "lib/data/routes";
+import { routes } from "lib/constants/routes";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import Icon from "../Icons/Icon";
-
 
 const NavMobile: FC = () => {
   const { pathname } = useRouter();

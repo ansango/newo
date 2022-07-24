@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 import ButtonLink from "../Button/ButtonLink";
-import { routes } from "lib/data/routes";
+import { routes } from "lib/constants/routes";
 
 const NavDesktop = () => {
   const { pathname } = useRouter();

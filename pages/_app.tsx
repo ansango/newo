@@ -6,7 +6,7 @@ import Head from "next/head";
 import WrapperLayout from "components/layout/WrapperLayout";
 import store from "lib/store";
 import { ThemeProvider } from "next-themes";
-import { defaultTheme, themes } from "lib/data/config";
+import { defaultTheme, themes } from "lib/constants/config";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (

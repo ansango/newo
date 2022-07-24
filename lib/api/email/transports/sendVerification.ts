@@ -1,5 +1,5 @@
-import { basicTemplate } from "lib/email/templates/basic";
-import { textBody } from "lib/email/textBody";
+import { basicTemplate } from "@/api/email/templates/basic";
+import { textBody } from "@/api/email/textBody";
 import { type Theme } from "next-auth";
 import { createTransport } from "nodemailer";
 

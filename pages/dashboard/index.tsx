@@ -1,5 +1,5 @@
 import GenericDashboardHero from "components/common/Hero/GenericDashboardHero";
-import { routesDashboard } from "lib/data/routes";
+import { routesDashboard } from "lib/constants/routes";
 import ContainerDashboard from "components/dashboard/ContainerDashboard";
 import DashboardLayout from "components/layout/DashboardLayout";
 
