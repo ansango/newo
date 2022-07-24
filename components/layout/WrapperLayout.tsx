@@ -1,3 +1,6 @@
+import { useGetSessionQuery } from "@/store/api/auth";
+import { setSession } from "@/store/features/auth";
+import { useAppDispatch } from "@/store/hooks";
 import { defaultTheme } from "lib/constants/config";
 import { useTheme } from "next-themes";
 import { FC, ReactNode, useEffect } from "react";
@@ -8,6 +11,8 @@ type Props = {
 };
 
 const WrapperLayout: FC<Props> = ({ children }) => {
+  const { data } = useGetSessionQuery();
+  const dispatch = useAppDispatch();
   const { theme } = useTheme();
   useEffect(() => {
     if (theme) {
@@ -16,6 +21,12 @@ const WrapperLayout: FC<Props> = ({ children }) => {
       document.documentElement.setAttribute("data-theme", defaultTheme);
     }
   }, [theme]);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setSession(data));
+    }
+  }, [data, dispatch]);
 
   return (
     <>

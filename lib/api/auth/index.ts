@@ -28,7 +28,6 @@ const authOptions: NextAuthOptions = {
   pages,
   secret,
   useSecureCookies: false, // set to true in production
-  debug: true,
 };
 
 export default authOptions;

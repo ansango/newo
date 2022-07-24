@@ -1,10 +1,8 @@
-import { useAppDispatch } from "@/store/hooks";
 import { Input, RadioGroup, TextArea } from "components/common/Forms";
 import { MultiSelect } from "components/common/Forms/MultiSelect";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
-import { useRouter } from "next/router";
 import CreateExerciseButton from "./CreateExerciseButton";
 import { categories, muscles } from "lib/constants";
 import { Icon } from "components/common/Icons";
@@ -20,7 +18,6 @@ type Selector = {
 const CreateExerciseForm = () => {
   const [selectedCategories, setSelectedCategories] = useState<Selector[]>([]);
   const [selectedMuscles, setSelectedMuscles] = useState<Selector[]>([]);
-  const dispatch = useAppDispatch();
 
   const [video, setVideo] = useState<string | null>(null);
   const [showMuscles, setShowMuscles] = useState<boolean>(false);
@@ -33,7 +30,6 @@ const CreateExerciseForm = () => {
   });
   const { handleSubmit, watch } = methods;
 
-  const { replace } = useRouter();
   const closeVideo = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setVideo(null);
@@ -47,7 +43,6 @@ const CreateExerciseForm = () => {
   const checkVideo = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const url = watch("video");
-    // regex to check if url is valid
     if (url.match(/^(https?:\/\/)?((www\.)?youtube\.com|youtu\.?be)\/.+$/)) {
       setVideo(url);
     }
@@ -59,42 +54,15 @@ const CreateExerciseForm = () => {
     },
   ];
 
-  // const onSubmit = useCallback(
-  //   async (values: any) => {
-  //     const image = values.file[0];
-  //     const isImage = image ? image.type.startsWith("image") : null;
-  //     if (image && isImage) {
-  //       const formData = new FormData();
-  //       formData.append("image", image);
-  //       const recipe = {
-  //         name: values.name,
-  //         description: values.description,
-
-  //         duration: values.duration,
-  //         servings: values.servings,
-  //         categories: selectedCategories.map(({ value }) => value),
-  //         blenders: selectedBlenders.map(({ value }) => value),
-  //         ingredients: values.ingredients.map((ingredient: any) => {
-  //           return {
-  //             name: ingredient.name,
-  //             quantity: parseInt(ingredient.quantity),
-  //             measure: ingredient.measure,
-  //           };
-  //         }),
-  //         steps: values.steps,
-  //       };
-
-  //       const redirect = (id: string) => replace(`/exercises/${id}`);
-  //     }
-  //   },
-  //   [dispatch, selectedCategories, selectedBlenders, replace]
-  // );
+  const onSubmit = useCallback(async (values: any) => {
+    console.log(values);
+  }, []);
 
   return (
     <FormProvider {...methods}>
       <form
         className="grid gap-5 grid-cols-12"
-        onSubmit={handleSubmit(console.log)}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <div className="col-span-full">
           <div className="grid gap-4 grid-cols-12">
@@ -121,8 +89,8 @@ const CreateExerciseForm = () => {
                     message: "Introduce una descripción",
                   },
                   minLength: {
-                    value: 135,
-                    message: "Al menos 135 caracteres",
+                    value: 5,
+                    message: "Al menos 35 caracteres",
                   },
                 }}
               />
@@ -168,16 +136,6 @@ const CreateExerciseForm = () => {
                 hasSelectAll={false}
               />
             </div>
-
-            {/* <div className="col-span-full">
-              <MultiSelect
-                label="Equipamiento"
-                options={categories}
-                value={selectedCategories}
-                onChange={setSelectedCategories}
-                labelledBy="Select"
-              />
-            </div> */}
 
             <div className="col-span-full">
               <div className="flex gap-5 items-end">
