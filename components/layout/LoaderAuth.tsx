@@ -1,13 +1,14 @@
 import Navbar from "components/common/Navbar";
-import { FC, ReactNode } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-type Props = {
-  children?: ReactNode;
-};
+import { useEffect } from "react";
 
-const AuthLayout: FC<Props> = ({ children }) => {
-  const { route } = useRouter();
+const LoaderAuth = () => {
+  const { push, route } = useRouter();
+  useEffect(() => {
+    push("/signin");
+    return () => {};
+  }, [push]);
   return (
     <div className="h-screen flex flex-col justify-between">
       <Navbar />
@@ -23,13 +24,11 @@ const AuthLayout: FC<Props> = ({ children }) => {
         className="h-full"
       >
         <section className="bg-base-200 h-full py-20 md:py-0">
-          <div className="max-w-md mx-auto w-full h-full flex flex-col justify-center">
-            {children}
-          </div>
+          <div className="max-w-md mx-auto w-full h-full flex flex-col justify-center"></div>
         </section>
       </motion.main>
     </div>
   );
 };
 
-export default AuthLayout;
+export default LoaderAuth;

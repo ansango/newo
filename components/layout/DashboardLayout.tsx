@@ -1,10 +1,11 @@
-import Navbar from "components/dashboard/Navbar/Navbar";
+import Navbar from "components/common/Navbar/Navbar";
 import { useRouter } from "next/router";
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, useEffect } from "react";
 import { motion } from "framer-motion";
 import DrawerContainer from "components/dashboard/Drawer/DrawerContainer";
 import { authSelector } from "@/store/features/auth";
 import { useSelector } from "react-redux";
+import LoaderAuth from "./LoaderAuth";
 
 type Props = {
   children?: ReactNode;
@@ -15,7 +16,7 @@ const DashboardLayout: FC<Props> = ({ children }) => {
   const { isAuthenticated } = useSelector(authSelector);
 
   if (!isAuthenticated) {
-    return <></>;
+    return <LoaderAuth />;
   }
 
   return (
