@@ -19,7 +19,6 @@
       "@/api/*": ["lib/api/*"],
       "@/mocks/*": ["lib/contants/*"],
       "@/models/*": ["lib/models/*"],
-      "@/services/*": ["lib/services/*"],
       "@/store/*": ["lib/store/*"],
       "@/utils/*": ["lib/utils/*"]
     }

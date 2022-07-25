@@ -9,6 +9,7 @@ import { Icon } from "components/common/Icons";
 import ReactPlayer from "react-player";
 
 import Model, { ExerciseData } from "components/common/BodyHighlighter";
+import { useCreateExerciseMutation } from "@/store/api/exercises";
 
 type Selector = {
   label: any;
@@ -16,6 +17,7 @@ type Selector = {
 };
 
 const CreateExerciseForm = () => {
+  const [createExercise] = useCreateExerciseMutation();
   const [selectedCategories, setSelectedCategories] = useState<Selector[]>([]);
   const [selectedMuscles, setSelectedMuscles] = useState<Selector[]>([]);
 
@@ -54,9 +56,16 @@ const CreateExerciseForm = () => {
     },
   ];
 
-  const onSubmit = useCallback(async (values: any) => {
-    console.log(values);
-  }, []);
+  const onSubmit = useCallback(
+    async (values: any) => {
+      createExercise({
+        ...values,
+        muscles: [...selectedMuscles.map((m) => m.value)],
+        categories: [...selectedCategories.map((c) => c.value)],
+      });
+    },
+    [createExercise, selectedMuscles, selectedCategories]
+  );
 
   return (
     <FormProvider {...methods}>

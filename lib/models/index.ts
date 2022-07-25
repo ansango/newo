@@ -69,7 +69,7 @@ export type Exercise = {
   tags: string[];
   categories: ExerciseCategory[];
   muscles: string[];
-  equipment: string[];
+  equipment: string[] | null;
   difficulty: string;
 };
 
