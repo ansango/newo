@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import DrawerContainer from "components/dashboard/Drawer/DrawerContainer";
 import { authSelector } from "@/store/features/auth";
 import { useSelector } from "react-redux";
-import LoaderAuth from "./LoaderAuth";
+import SignIn from "pages/signin";
 
 type Props = {
   children?: ReactNode;
@@ -16,7 +16,7 @@ const DashboardLayout: FC<Props> = ({ children }) => {
   const { isAuthenticated } = useSelector(authSelector);
 
   if (!isAuthenticated) {
-    return <LoaderAuth />;
+    return <SignIn />;
   }
 
   return (
