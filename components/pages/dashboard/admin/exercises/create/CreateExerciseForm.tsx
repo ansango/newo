@@ -3,13 +3,13 @@ import { MultiSelect } from "components/common/Forms/MultiSelect";
 import { useCallback, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
-import CreateExerciseButton from "./CreateExerciseButton";
 import { categories, muscles } from "lib/constants";
 import { Icon } from "components/common/Icons";
 import ReactPlayer from "react-player";
 
 import Model, { ExerciseData } from "components/common/BodyHighlighter";
 import { useCreateExerciseMutation } from "@/store/api/exercises";
+import { Button } from "react-daisyui";
 
 type Selector = {
   label: any;
@@ -242,7 +242,9 @@ const CreateExerciseForm = () => {
 
         <div className="col-span-full">
           <div className="flex justify-end w-full">
-            <CreateExerciseButton />
+            <Button type="submit" className="normal-case">
+              Crear ejercicio
+            </Button>
           </div>
         </div>
       </form>

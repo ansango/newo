@@ -11,6 +11,7 @@ import { defaultTheme } from "lib/constants/config";
 import { authSelector, logout } from "@/store/features/auth";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/store/hooks";
+import { Dropdown } from "react-daisyui";
 
 const User: FC = () => {
   const { isAuthenticated, user } = useSelector(authSelector);
@@ -28,16 +29,11 @@ const User: FC = () => {
   return (
     <>
       {isAuthenticated && (
-        <div className="dropdown dropdown-hover py-2 dropdown-end">
-          {user && user.email && (
-            <label tabIndex={0} className="btn btn-ghost btn-square">
-              <Avatar size="xs" email={user.email} />
-            </label>
-          )}
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-16 top-px p-2 shadow bg-base-200 rounded-box w-52"
-          >
+        <Dropdown vertical="end" hover>
+          <Dropdown.Toggle button={false} className="btn btn-ghost btn-square">
+            {user && <Avatar size="xs" email={user.email} />}
+          </Dropdown.Toggle>
+          <Dropdown.Menu className="menu menu-compact p-2 shadow w-52">
             {userNavRoutes.map(({ label, path, icon }) => {
               const cn = routeActive(pathname, path)
                 ? "bg-primary text-primary-content"
@@ -62,8 +58,8 @@ const User: FC = () => {
                 Cerrar Sesión
               </a>
             </li>
-          </ul>
-        </div>
+          </Dropdown.Menu>
+        </Dropdown>
       )}
     </>
   );

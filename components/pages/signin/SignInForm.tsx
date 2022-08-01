@@ -9,7 +9,7 @@ type Props = {};
 
 const SignInForm: FC<Props> = ({}) => {
   const [isLoading, setIsloading] = useState(false);
-  const onSubmit = async ({ email }: { email: Email }) => {
+  const onSubmit = async ({ email }: { email: string }) => {
     setIsloading(true);
     try {
       await signIn("email", { email });
@@ -32,9 +32,9 @@ const SignInForm: FC<Props> = ({}) => {
             },
           }}
         />
-        <ButtonMail label="Iniciar sesión" isFull isLoading={isLoading} />
+        <ButtonMail label="Iniciar sesión" isLoading={isLoading} />
         <div className="divider">O accede con</div>
-        <ButtonGoogle isFull label="Google" />
+        <ButtonGoogle label="Google" />
       </CardBasicContent>
     </Form>
   );

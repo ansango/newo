@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const withTM = require("next-transpile-modules")(["react-daisyui"]);
 const nextTranslate = require("next-translate");
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
@@ -17,4 +18,4 @@ const nextConfig = {
   reactStrictMode: true,
 };
 
-module.exports = nextTranslate(nextConfig);
+module.exports = nextTranslate(withTM(nextConfig));

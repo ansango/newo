@@ -13,6 +13,7 @@ const Avatar: FC<AvatarProps> = ({ size, imgUrl, email }) => {
   return avatar ? (
     <FullAvatar size={size} imgUrl={avatar} />
   ) : email ? (
+      
     <BlankAvatar size={size} email={email} />
   ) : null;
 };

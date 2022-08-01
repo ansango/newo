@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Button } from "react-daisyui";
 
 type Props = {
   label?: string;
@@ -15,9 +16,9 @@ const ButtonSubmit: FC<Props> = ({
   const loading = isLoading ? "loading" : "";
   const cn = `btn btn-primary normal-case ${full} ${loading}`;
   return (
-    <button type="submit" className={cn}>
+    <Button type="submit" className="normal-case">
       {label}
-    </button>
+    </Button>
   );
 };
 
